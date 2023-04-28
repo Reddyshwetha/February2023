@@ -9,10 +9,13 @@ using OpenQA.Selenium;
 namespace MarsQA.StepDefinitions
 {
     [Binding]
-    public class ProfileFeatureStepDefinitions
+    public class ProfileFeatureStepDefinitions : CommonDriver 
     {
-        public IWebDriver driver = new ChromeDriver(@"C:/Users/shwet/OneDrive/Desktop/February2023");
+        //public IWebDriver driver = new ChromeDriver(@"C:/Users/shwet/OneDrive/Desktop/February2023");
         //Page object initialization
+     
+
+
         LoginPage logininPageObj = new LoginPage();
         HomePage homepageObj = new HomePage();
         ProfilePage profilePageObj = new ProfilePage();
@@ -275,6 +278,13 @@ namespace MarsQA.StepDefinitions
         {
             throw new PendingStepException();
         }
+
+        [OneTimeTearDown]
+        public void CloseTestRun()
+        {
+            driver.Quit();
+        }
+
     }
 }
 
